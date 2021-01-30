@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int sum(int array[],int len)
+{
+    int answer=0;
+    static int i=0;
+    answer+=array[i]-48;
+    ++i;
+    if(i<len)sum(array,len);
+    return answer;
+}
+
+
+int main(void)
+{
+    int result[200];
+    int i=0;
+    int c;
+    do{
+        c=getchar();
+        if(c>=48&&c<=57)result[i]=c;//+=c-48;
+        if(c==70)result[i]=49;
+        ++i;
+        //printf("%d",result);
+    }while(c==70||c==71||c==40||c==41||c==44||(c>=48&&c<=57));
+    --i;
+    printf("%d",sum(result,i));
+    return 0;
+}
